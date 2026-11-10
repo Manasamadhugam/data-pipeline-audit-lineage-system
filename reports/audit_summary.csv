@@ -1,4 +1,5 @@
 run_id,execution_time,input_files,total_input_records,output_files,total_output_records,rejected_records,status
+55879814-5f15-4bec-b5b4-213105906f98,2026-11-10T07:49:41.237506+00:00,"C:\Users\manasa\OneDrive\Desktop\Data-Pipeline-Audit & Lineage-System\data\customers.csv,C:\Users\manasa\OneDrive\Desktop\Data-Pipeline-Audit & Lineage-System\data\orders.csv",3000.0,"C:\Users\manasa\OneDrive\Desktop\Data-Pipeline-Audit & Lineage-System\output\cleaned_customers.csv,C:\Users\manasa\OneDrive\Desktop\Data-Pipeline-Audit & Lineage-System\output\cleaned_orders.csv",2986.0,14,SUCCESS
 d3227bcb-42bd-49f8-aa0b-d75dd6d568e5,2026-11-10T05:40:50.591306+00:00,"data/customers.csv,data/orders.csv",3000.0,"output/cleaned_customers.csv,output/cleaned_orders.csv",2986.0,14,SUCCESS
 17164f2b-d9d8-4c5b-aea3-4d495903e721,2026-11-10T05:40:28.911083+00:00,"data/customers.csv,data/orders.csv",3000.0,"output/cleaned_customers.csv,output/cleaned_orders.csv",2986.0,14,SUCCESS
 d1e877c7-6d23-453e-ac68-e7ae0e29f85f,2026-11-10T05:35:33.090296+00:00,"data/customers.csv,data/orders.csv",3000.0,"output/cleaned_customers.csv,output/cleaned_orders.csv",2986.0,14,SUCCESS

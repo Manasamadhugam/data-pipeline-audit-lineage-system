@@ -23,3 +23,7 @@ d3227bcb-42bd-49f8-aa0b-d75dd6d568e5,2026-11-10T05:40:50.591306+00:00,data/custo
 d3227bcb-42bd-49f8-aa0b-d75dd6d568e5,2026-11-10T05:40:50.591306+00:00,data/orders.csv,2000,,,14,SUCCESS
 d3227bcb-42bd-49f8-aa0b-d75dd6d568e5,2026-11-10T05:40:50.591306+00:00,,,output/cleaned_customers.csv,997,14,SUCCESS
 d3227bcb-42bd-49f8-aa0b-d75dd6d568e5,2026-11-10T05:40:50.591306+00:00,,,output/cleaned_orders.csv,1989,14,SUCCESS
+55879814-5f15-4bec-b5b4-213105906f98,2026-11-10T07:49:41.237506+00:00,C:\Users\manasa\OneDrive\Desktop\Data-Pipeline-Audit & Lineage-System\data\customers.csv,1000,,,14,SUCCESS
+55879814-5f15-4bec-b5b4-213105906f98,2026-11-10T07:49:41.237506+00:00,C:\Users\manasa\OneDrive\Desktop\Data-Pipeline-Audit & Lineage-System\data\orders.csv,2000,,,14,SUCCESS
+55879814-5f15-4bec-b5b4-213105906f98,2026-11-10T07:49:41.237506+00:00,,,C:\Users\manasa\OneDrive\Desktop\Data-Pipeline-Audit & Lineage-System\output\cleaned_customers.csv,997,14,SUCCESS
+55879814-5f15-4bec-b5b4-213105906f98,2026-11-10T07:49:41.237506+00:00,,,C:\Users\manasa\OneDrive\Desktop\Data-Pipeline-Audit & Lineage-System\output\cleaned_orders.csv,1989,14,SUCCESS

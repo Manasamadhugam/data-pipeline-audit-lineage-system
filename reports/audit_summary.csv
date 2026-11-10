@@ -1,0 +1,7 @@
+run_id,execution_time,input_files,total_input_records,output_files,total_output_records,rejected_records,status
+11ce6574-a3f7-42cd-9c5d-8f307c227f98,2026-11-10T05:15:20.953336+00:00,"data/customers.csv,data/orders.csv",3000.0,"output/cleaned_customers.csv,output/cleaned_orders.csv",2986.0,14,SUCCESS
+17164f2b-d9d8-4c5b-aea3-4d495903e721,2026-11-10T05:40:28.911083+00:00,"data/customers.csv,data/orders.csv",3000.0,"output/cleaned_customers.csv,output/cleaned_orders.csv",2986.0,14,SUCCESS
+1c43dea4-0125-4c60-880b-6a79e6c872ef,2026-11-10T05:23:52.146117+00:00,"data/customers.csv,data/orders.csv",3000.0,"output/cleaned_customers.csv,output/cleaned_orders.csv",2986.0,14,SUCCESS
+5cba3a38-1ab8-47ff-8da3-6357770bec21,2026-11-10T05:24:38.371317+00:00,"data/customers.csv,data/orders.csv",3000.0,"output/cleaned_customers.csv,output/cleaned_orders.csv",2986.0,14,SUCCESS
+d1e877c7-6d23-453e-ac68-e7ae0e29f85f,2026-11-10T05:35:33.090296+00:00,"data/customers.csv,data/orders.csv",3000.0,"output/cleaned_customers.csv,output/cleaned_orders.csv",2986.0,14,SUCCESS
+d3227bcb-42bd-49f8-aa0b-d75dd6d568e5,2026-11-10T05:40:50.591306+00:00,"data/customers.csv,data/orders.csv",3000.0,"output/cleaned_customers.csv,output/cleaned_orders.csv",2986.0,14,SUCCESS

@@ -1,0 +1,15 @@
+customer_id,customer_name,email,city,signup_date,source_file,source_row,reject_reason,entity,order_id,order_date,amount,status
+C0006,Arjun,,Hyderabad,2026-01-15,customers.csv,7,Missing email; ,customer,,,,
+C0011,Kiran,customer11@gmail.com,,2026-01-15,customers.csv,12,Missing city; ,customer,,,,
+C0001,Priya,customer1000@gmail.com,Hyderabad,2026-01-15,customers.csv,1001,Duplicate customer_id; ,customer,,,,
+C0006,,,,,orders.csv,94,Invalid customer reference; ,order,O00093,2026-02-10,9648.74,Completed
+C0011,,,,,orders.csv,334,Invalid customer reference; ,order,O00333,2026-02-10,1076.2,Completed
+C0006,,,,,orders.csv,954,Invalid customer reference; ,order,O00953,2026-02-10,3372.57,Cancelled
+C0006,,,,,orders.csv,1133,Invalid customer reference; ,order,O01132,2026-02-10,8063.26,Completed
+C1000,,,,,orders.csv,1147,Invalid customer reference; ,order,O01146,2026-02-10,1658.7,Pending
+C1000,,,,,orders.csv,1831,Invalid customer reference; ,order,O01830,2026-02-10,6872.47,Cancelled
+C0613,,,,,orders.csv,1997,Invalid order_date; ,order,O01996,invalid_date,952.17,Completed
+C0311,,,,,orders.csv,1998,Missing amount; Invalid amount; ,order,O01997,2026-02-10,,Cancelled
+C0344,,,,,orders.csv,1999,Invalid amount; ,order,O01998,2026-02-10,-500.0,Cancelled
+C9999,,,,,orders.csv,2000,Invalid customer reference; ,order,O01999,2026-02-10,3820.15,Completed
+C0420,,,,,orders.csv,2001,Duplicate order_id; ,order,O00001,2026-02-10,6424.18,Pending

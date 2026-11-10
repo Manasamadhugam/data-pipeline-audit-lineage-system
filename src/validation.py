@@ -2,7 +2,12 @@
 import pandas as pd
 import os
 
+# Get project folder path
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+REJECTED_DIR = os.path.join(BASE_DIR, "rejected")
 
+
+# 1. Validate Customers
 def validate_customers(customers):
 
     df = customers.copy()
@@ -14,11 +19,22 @@ def validate_customers(customers):
     reasons = pd.Series("", index=df.index, dtype="object")
 
     # Check missing required fields
-    for column in ["customer_id", "customer_name", "email", "city"]:
+    for column in ["customer_id", "customer_name", "email",
+                   "city", "signup_date"]:
+
         invalid = df[column].isna() | (
             df[column].astype(str).str.strip() == ""
         )
+
         reasons.loc[invalid] += f"Missing {column}; "
+
+    # Check invalid signup dates
+    signup_dates = pd.to_datetime(
+        df["signup_date"], errors="coerce"
+    )
+
+    invalid_dates = signup_dates.isna()
+    reasons.loc[invalid_dates] += "Invalid signup_date; "
 
     # Check duplicate customer IDs
     duplicate = df["customer_id"].duplicated(keep="first")
@@ -35,6 +51,7 @@ def validate_customers(customers):
     return valid, rejected
 
 
+# 2. Validate Orders
 def validate_orders(orders, valid_customers):
 
     df = orders.copy()
@@ -48,9 +65,11 @@ def validate_orders(orders, valid_customers):
     # Check missing required fields
     for column in ["order_id", "customer_id", "order_date",
                    "amount", "status"]:
+
         invalid = df[column].isna() | (
             df[column].astype(str).str.strip() == ""
         )
+
         reasons.loc[invalid] += f"Missing {column}; "
 
     # Check duplicate order IDs
@@ -58,22 +77,30 @@ def validate_orders(orders, valid_customers):
     reasons.loc[duplicate] += "Duplicate order_id; "
 
     # Check invalid dates
-    parsed_dates = pd.to_datetime(df["order_date"], errors="coerce")
+    parsed_dates = pd.to_datetime(
+        df["order_date"], errors="coerce"
+    )
+
     invalid_dates = parsed_dates.isna()
     reasons.loc[invalid_dates] += "Invalid order_date; "
 
     # Check negative or invalid amounts
     amounts = pd.to_numeric(df["amount"], errors="coerce")
+
     invalid_amounts = amounts.isna() | (amounts < 0)
     reasons.loc[invalid_amounts] += "Invalid amount; "
 
     # Check customer reference
-    customer_ids = set(valid_customers["customer_id"].dropna())
+    customer_ids = set(
+        valid_customers["customer_id"].dropna()
+    )
+
     invalid_reference = ~df["customer_id"].isin(customer_ids)
     reasons.loc[invalid_reference] += "Invalid customer reference; "
 
     # Check valid order status
     allowed_statuses = ["Completed", "Pending", "Cancelled"]
+
     invalid_status = ~df["status"].isin(allowed_statuses)
     reasons.loc[invalid_status] += "Invalid order status; "
 
@@ -88,6 +115,7 @@ def validate_orders(orders, valid_customers):
     return valid, rejected
 
 
+# 3. Validate Complete Datasets
 def validate_data(customers, orders):
 
     print("\nStarting Data Validation...")
@@ -111,10 +139,14 @@ def validate_data(customers, orders):
     )
 
     # Save rejected records
-    os.makedirs("rejected", exist_ok=True)
+    os.makedirs(REJECTED_DIR, exist_ok=True)
+
+    rejected_path = os.path.join(
+        REJECTED_DIR, "rejected_records.csv"
+    )
 
     rejected_records.to_csv(
-        "rejected/rejected_records.csv",
+        rejected_path,
         index=False
     )
 
@@ -133,7 +165,7 @@ def validate_data(customers, orders):
     print("\nTotal Rejected Records:", len(rejected_records))
 
     print("\nRejected records saved to:")
-    print("rejected/rejected_records.csv")
+    print(rejected_path)
 
     return (
         valid_customers,
@@ -142,6 +174,7 @@ def validate_data(customers, orders):
     )
 
 
+# 4. Execute Validation
 if __name__ == "__main__":
 
     from ingestion import load_all_data

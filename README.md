@@ -100,7 +100,7 @@ This project addresses these problems through automated data validation, transfo
 
 ```text
 
-data\_pipeline\_audit\_system/
+data-pipeline-audit-lineage-system/
 
 │
 
@@ -190,9 +190,8 @@ data\_pipeline\_audit\_system/
 
 ```bash
 
-git clone YOUR\_GITHUB\_REPOSITORY\_URL
-
-cd data\_pipeline\_audit\_system
+git clone https://github.com/Manasamadhugam/data-pipeline-audit-lineage-system.git
+cd data-pipeline-audit-lineage-system
 
 ```
 
@@ -279,6 +278,10 @@ python -m pytest -v
 \- Advanced data quality metrics.
 
 \- Configurable validation rules.
+
+\- Failure handling and error logging.
+
+\- Detailed data lineage tracking.
 
 
 

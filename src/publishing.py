@@ -1,16 +1,28 @@
 
-import pandas as pd
+
 import os
+import sys
+
+# Get project folder paths
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+OUTPUT_DIR = os.path.join(BASE_DIR, "output")
+SRC_DIR = os.path.join(BASE_DIR, "src")
 
 
+# 1. Publish cleaned datasets
 def publish_data(customers, orders):
 
     # Create output folder
-    os.makedirs("output", exist_ok=True)
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     # Define output file paths
-    customers_path = "output/cleaned_customers.csv"
-    orders_path = "output/cleaned_orders.csv"
+    customers_path = os.path.join(
+        OUTPUT_DIR, "cleaned_customers.csv"
+    )
+
+    orders_path = os.path.join(
+        OUTPUT_DIR, "cleaned_orders.csv"
+    )
 
     # Save cleaned customer data
     customers.to_csv(
@@ -41,23 +53,31 @@ def publish_data(customers, orders):
     }
 
 
+# 2. Execute publishing independently
 if __name__ == "__main__":
 
-    import sys
-    sys.path.insert(0, "src")
+    # Add src folder to Python import path
+    sys.path.insert(0, SRC_DIR)
 
     from ingestion import load_all_data
     from validation import validate_data
     from transformation import transform_data
 
+    # Load datasets
     customers, orders, _ = load_all_data()
 
+    # Validate datasets
     valid_customers, valid_orders, rejected = validate_data(
         customers, orders
     )
 
+    # Transform valid datasets
     transformed_customers, transformed_orders = transform_data(
         valid_customers, valid_orders
     )
 
-    publish_data(transformed_customers, transformed_orders)
+    # Publish cleaned datasets
+    publish_data(
+        transformed_customers,
+        transformed_orders
+    )
